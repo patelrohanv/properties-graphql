@@ -3,12 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Property {
     id: ID!
-    name: String
-    address: String
-    city: String
-    state: String
-    zip: String
-    created_at: String
+    name: String!
+    address: String!
+    city: String!
+    state: String!
+    zip: String!
+    created_at: String!
     updated_at: String
     legacy_id: String
   }
@@ -18,7 +18,8 @@ const typeDefs = gql`
   }
   
   type Mutation {
-    addProperty(name: String, address: String!, city: String!, state: String!, zip: String!): Property
+    createProperty(name: String!, address: String!, city: String!, state: String!, zip: String!): Property
+    updateProperty(id: ID!, name: String, address: String, city: String, state: String, zip: String): Property
   }  
 `;
 
